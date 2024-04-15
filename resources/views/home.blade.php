@@ -14,7 +14,7 @@
                     </div>
                     @endif
                     @if (isset(Auth::user()->certificate->usia))
-                       <p>Data anda disini</p>
+                    <x-profile-detail/>
                     @else
                     <p>Anda Belum Melakukan Sertifikasi silakan klik <a href="{{route('sertifikasi')}}">link</a> Untuk
                         melakukan pendaftaran !!</p>
