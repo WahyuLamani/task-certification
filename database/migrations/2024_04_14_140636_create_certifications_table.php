@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('certifications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('usia');
-            $table->string('pendidikan');
+            $table->string('dok_ktp');
+            $table->string('dok_ijazah');
             $table->string('photo_profile')->nullable();
             $table->string('dok_kesehatan')->nullable();
             $table->string('dok_certif_training')->nullable();
@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('dok_other')->nullable();
             $table->text('desc')->nullable();
             $table->enum('status',['pending','proses','accept'])->default('pending');
+            $table->boolean('uploaded')->default(true);
             $table->timestamps();
         });
     }

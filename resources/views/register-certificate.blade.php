@@ -15,23 +15,24 @@
                     @endif
                 <form action="{{route('submit.certificate')}}" method="post" enctype="multipart/form-data">@csrf
                     <div class="row mb-3 gap-3">
-                        <label for="umur" class="col-md-4 col-form-label text-md-end">Umur</label>
+                        <label for="ktp" class="col-md-4 col-form-label text-md-end">Upload KTP</label>
                         <div class="col-md-6">
-                            <input id="umur" type="number"
-                                class="form-control @error('umur') is-invalid @enderror" name="umur"
-                                value="{{ old('umur') }}" autocomplete="umur" autofocus>
-                            @error('umur')
+                            <input id="ktp" type="file"
+                                class="form-control @error('ktp') is-invalid @enderror" name="ktp"
+                                value="{{ old('ktp') }}" autocomplete="ktp" autofocus>
+                            @error('ktp')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                         </div>
-                        <label for="pendidikan" class="col-md-4 col-form-label text-md-end">Pendidikan</label>
+                        <label for="ijazah" class="col-md-4 col-form-label text-md-end">Upload Ijazah</label>
                         <div class="col-md-6">
-                            <input id="pendidikan" type="text"
-                                class="form-control @error('pendidikan') is-invalid @enderror" name="pendidikan"
-                                value="{{ old('pendidikan') }}" autocomplete="pendidikan" autofocus>
-                            @error('pendidikan')
+                            <input id="ijazah" type="file"
+                                class="form-control @error('ijazah') is-invalid @enderror" name="ijazah"
+                                value="{{ old('ijazah') }}" autocomplete="ijazah" autofocus>
+                                <small id="inputNote" class="form-text text-muted"><i>*)Ijazah Pendidikan terakhir</i></small>
+                            @error('ijazah')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -41,7 +42,7 @@
                             <div class="col-md-6">
                                 <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror"
                                     name="photo" value="{{ old('photo') }}" autocomplete="photo">
-                                    <small id="inputNote" class="form-text text-muted"><i>*)foto selfie</i></small>
+                                    <small id="inputNote" class="form-text text-muted"><i>*)foto selfie atau pas photo</i></small>
                                 @error('photo')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -92,7 +93,7 @@
                             </span>
                             @enderror
                         </div>
-                        <label for="doc_other" class="col-md-4 col-form-label text-md-end">Upload Sertifikat Pendukung lainnya</label>
+                        <label for="doc_other" class="col-md-4 col-form-label text-md-end">Upload Dokumen Pendukung lainnya</label>
                         <div class="col-md-6">
                             <input id="doc_other" type="file"
                                 class="form-control @error('doc_other') is-invalid @enderror" name="doc_other"

@@ -13,12 +13,12 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    @if (isset(Auth::user()->certificate->usia))
-                    <x-profile-detail/>
+                    @if (isset(Auth::user()->certificate->uploaded))
+                        <x-profile-detail/>
                     @else
                     <p>Anda Belum Melakukan Sertifikasi silakan klik <a href="{{route('sertifikasi')}}">link</a> Untuk
                         melakukan pendaftaran !!</p>
-                   @endif
+                    @endif
                 </div>
             </div>
         </div>

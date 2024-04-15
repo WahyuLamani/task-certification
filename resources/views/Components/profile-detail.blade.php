@@ -14,8 +14,6 @@
     <h2>{{Auth::user()->name}}</h2>
     {!! Auth::user()->certificate->desc !!}
     <ul class="list-group">
-        <li class="list-group-item">Umur: {{Auth::user()->certificate->usia}} Tahun</li>
-        <li class="list-group-item">Pendidikan terakhir: {{Auth::user()->certificate->pendidikan}}</li>
         <li class="list-group-item">Status Sertifikasi: <span class="badge bg-{{Auth::user()->certificate->status == 'pending' ? 'warning' : 'success'}}">{{Auth::user()->certificate->status}}</span></li>
     </ul>
     <div class="mt-3">
@@ -31,6 +29,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+            <iframe id="pdfIframe" src="{{asset('storage/'.Auth::user()->certificate->dok_ktp)}}" width="100%" height="600px"></iframe>
+            <iframe id="pdfIframe" src="{{asset('storage/'.Auth::user()->certificate->dok_ijazah)}}" width="100%" height="600px"></iframe>
             <iframe id="pdfIframe" src="{{asset('storage/'.Auth::user()->certificate->dok_kesehatan)}}" width="100%" height="600px"></iframe>
             <iframe id="pdfIframe" src="{{asset('storage/'.Auth::user()->certificate->dok_certif_training)}}" width="100%" height="600px"></iframe>
             <iframe id="pdfIframe" src="{{asset('storage/'.Auth::user()->certificate->dok_certif_competention_one)}}" width="100%" height="600px"></iframe>
