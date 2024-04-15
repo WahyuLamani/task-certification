@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Controllers\CertificationController;
+use App\Http\Controllers\CertificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +17,8 @@ use App\Controllers\CertificationController;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/sertifikasi',[CertificationController::class],'index')->name('sertifikasi');
+Route::middleware(['auth'])->group(function(){
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/sertifikasi',[CertificationController::class, 'index'])->name('sertifikasi');
+    Route::post('/sertifikasi',[CertificationController::class, 'store'])->name('submit.certificate');
+});

@@ -13,8 +13,12 @@
                         {{ session('status') }}
                     </div>
                     @endif
+                    @if (isset(Auth::user()->certificate->usia))
+                       <p>Data anda disini</p>
+                    @else
                     <p>Anda Belum Melakukan Sertifikasi silakan klik <a href="{{route('sertifikasi')}}">link</a> Untuk
                         melakukan pendaftaran !!</p>
+                   @endif
                 </div>
             </div>
         </div>
