@@ -15,6 +15,17 @@
                     @endif
                 <form action="{{route('submit.certificate')}}" method="post" enctype="multipart/form-data">@csrf
                     <div class="row mb-3 gap-3">
+                        <label for="telepon" class="col-md-4 col-form-label text-md-end">Telepon</label>
+                        <div class="col-md-6">
+                            <input id="telepon" type="text"
+                                class="form-control @error('telepon') is-invalid @enderror" name="telepon"
+                                value="{{ old('telepon') }}" autocomplete="telepon" autofocus>
+                            @error('telepon')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                         <label for="ktp" class="col-md-4 col-form-label text-md-end">Upload KTP</label>
                         <div class="col-md-6">
                             <input id="ktp" type="file"

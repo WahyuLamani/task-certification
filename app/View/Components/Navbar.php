@@ -14,7 +14,7 @@ class Navbar extends Component
     public function __construct()
     {
         if(Auth::check()){
-            if(Auth::user()->rules === 'admin'){
+            if(Auth::user()->rules === 'admin' || isset(Auth::user()->certificate->uploaded)){
                 $this->navigation = [
                     [
                         'navName' => 'Home',
@@ -22,7 +22,8 @@ class Navbar extends Component
                         'alreadyExist' => false,
                     ],
                 ];
-            }else{
+            }
+            else{
                 $this->navigation = [
                     [
                         'navName' => 'Home',

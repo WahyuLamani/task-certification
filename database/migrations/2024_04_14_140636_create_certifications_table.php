@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('certifications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->string('telepon');
             $table->string('dok_ktp');
             $table->string('dok_ijazah');
             $table->string('photo_profile')->nullable();

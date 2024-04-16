@@ -16,6 +16,7 @@ class CertificationController extends Controller
 
     public function store(Request $request) {
         $request->validate([
+            'telepon' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
             'ktp' => ['required','mimes:jpg,png,jpeg,pdf','max:2048'],
             'ijazah' => ['required','mimes:jpg,png,jpeg,pdf','max:2048'],
             'photo' => ['required','mimes:jpg,png,jpeg','max:2048'],
@@ -49,6 +50,7 @@ class CertificationController extends Controller
             return redirect()->back()->with('error',$e);
         }
         Auth::user()->certificate()->create([
+            'telepon' => $request->telepon,
             'dok_ktp' => $pathKtp,
             'dok_ijazah' => $pathIjazah,
             'photo_profile' => $pathPhoto,
