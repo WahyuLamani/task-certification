@@ -2,18 +2,44 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class Navbar extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
+   
+    public $navigation = [];
+    public $navItem ;
+
     public function __construct()
     {
-        //
+        if(Auth::check()){
+            if(Auth::user()->rules === 'admin'){
+                $this->navigation = [
+                    [
+                        'navName' => 'Home',
+                        'directlink' => '/',
+                        'alreadyExist' => false,
+                    ],
+                ];
+            }else{
+                $this->navigation = [
+                    [
+                        'navName' => 'Home',
+                        'directlink' => '/',
+                        'alreadyExist' => false,
+                    ] ,
+                    [
+                        'navName' => 'Sertifikasi',
+                        'directlink' => 'sertifikasi',
+                        'alreadyExist' => true
+                    ]
+                ];
+            }
+        }
+
+        $this->navItem = collect($this->navigation);
+
     }
 
     /**

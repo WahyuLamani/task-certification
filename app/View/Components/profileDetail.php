@@ -2,18 +2,16 @@
 
 namespace App\View\Components;
 
+use App\Models\Certification;
 use Illuminate\View\Component;
 
 class profileDetail extends Component
 {
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    
+    public $userId;
+    public function __construct($userId)
     {
-        //
+        $this->userId = $userId;
     }
 
     /**
@@ -23,6 +21,8 @@ class profileDetail extends Component
      */
     public function render()
     {
-        return view('components.profile-detail');
+        $user = Certification::where('user_id',$this->userId)->first();
+        return view('components.profile-detail', compact('user'));
+
     }
 }

@@ -21,4 +21,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/sertifikasi',[CertificationController::class, 'index'])->name('sertifikasi');
     Route::post('/sertifikasi',[CertificationController::class, 'store'])->name('submit.certificate');
+    Route::middleware(['isAdmin'])->group(function(){
+        Route::get('/tes', function(){
+            return 'tes';
+        });
+    });
 });
