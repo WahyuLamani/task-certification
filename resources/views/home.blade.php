@@ -44,8 +44,8 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 @if (!isset($user->certificate->uploaded))
-                                <td></td>
                                 <td><span class="badge bg-secondary">User belum mengajukan sertifikasi</span></td>
+                                <td></td>
                                 @else
                                 <td>{{$user->certificate->telepon}}</td>
                                 <td><a href="#" data-bs-toggle="modal"
