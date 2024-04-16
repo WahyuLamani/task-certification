@@ -6,9 +6,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <iframe id="pdfIframe" src="{{asset('storage/'.$certificate->dok_ktp)}}" width="1080px"
+                <style>
+                    .profile-img {
+                        width: 200px;
+                        height: 200px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                </style>
+                <div class="text-center">
+                    <img src="{{asset('storage/'.$certificate->photo_profile)}}" class="profile-img"
+                        style="width: 450px; height: 450px;">
+                </div>
+                <iframe id="pdfIframe" src="{{asset('storage/'.$certificate->dok_ktp)}}" width="100%"
                     height="600px"></iframe>
-                <iframe id="pdfIframe" src="{{asset('storage/'.$certificate->dok_ijazah)}}" width="1080px"
+                <iframe id="pdfIframe" src="{{asset('storage/'.$certificate->dok_ijazah)}}" width="100%"
                     height="600px"></iframe>
                 <iframe id="pdfIframe" src="{{asset('storage/'.$certificate->dok_kesehatan)}}" width="100%"
                     height="600px"></iframe>
