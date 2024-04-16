@@ -8,10 +8,10 @@ use Illuminate\View\Component;
 class profileDetail extends Component
 {
     
-    public $userId;
-    public function __construct($userId)
+    public $certificateId;
+    public function __construct($certificateId)
     {
-        $this->userId = $userId;
+        $this->certificateId = $certificateId;
     }
 
     /**
@@ -21,8 +21,9 @@ class profileDetail extends Component
      */
     public function render()
     {
-        $user = Certification::where('user_id',$this->userId)->first();
-        return view('components.profile-detail', compact('user'));
+        // dd($this->certificateId);
+        $certificate = Certification::whereId($this->certificateId)->with('user')->first();
+        return view('components.profile-detail', compact('certificate'));
 
     }
 }
