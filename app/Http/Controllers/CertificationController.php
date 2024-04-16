@@ -19,7 +19,7 @@ class CertificationController extends Controller
             'telepon' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
             'ktp' => ['required','mimes:pdf','max:2048'],
             'ijazah' => ['required','mimes:pdf','max:2048'],
-            'photo' => ['required','mimes:jpg,png,jpeg,pdf','max:2048'],
+            'photo' => ['required','mimes:jpg,png,jpeg','max:2048'],
             'doc_mcu' => ['required','mimes:pdf','max:2048'],
             'doc_trening' => ['required','mimes:pdf','max:2048'],
             'doc_certif' => ['required','mimes:pdf','max:2048'],
