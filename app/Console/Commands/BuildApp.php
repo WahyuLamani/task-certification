@@ -40,11 +40,17 @@ class BuildApp extends Command
         }
 
         // Execute php artisan migrate
-        passthru('php artisan migrate --seed', $exitCode);
-
+        passthru('php artisan migrate --seed', $phpExecute);
         // Periksa kode keluaran (exit code) untuk mengetahui apakah perintah berhasil dijalankan
-        if ($exitCode === 0) {
+        if ($phpExecute === 0) {
             $this->info('Migration completed successfully!');
+        } else {
+            $this->error('Error occurred while running migration!');
+        }
+        
+        passthru('npm run build', $npmExecute);
+        if ($npmExecute === 0) {
+            $this->info('Build app successfully!');
         } else {
             $this->error('Error occurred while running migration!');
         }
