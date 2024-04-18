@@ -17,14 +17,33 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-
+<style>
+    /* Custom CSS for Ministry of Transportation logo */
+    .ministry-logo {
+      width: 27px; /* Sesuaikan ukuran logo */
+      height: auto;
+      margin-right: 10px; /* Spasi antara logo dan teks navbar */
+    }
+    /* Custom CSS for small text */
+    .small-text {
+      font-size: 0.8rem;
+    }
+    
+  </style>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                <div>
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{asset('assets/images/kementrian-perhubungan.png')}}" alt="Ministry of Transportation Logo" class="ministry-logo">
+                        <span class="">
+                            <div>Kementerian Perhubungan</div>
+                            <div class="small-text">BTPD Wilayah VI</div>
+                          </span>
+                    </a>
+                    
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -74,7 +93,7 @@
             </div>
         </nav>
 
-        <main class="py-3">
+        <main>
             @yield('content')
         </main>
     </div>
