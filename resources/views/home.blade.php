@@ -6,23 +6,31 @@
 
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-12">
+            <h3 class="fw-bold">Hallo, {{Auth::user()->name}}</h3>
+            <h6 class="fw-bold">Layanan Sertifikasi Online</h6>
+            @if(Auth::user()->rules !== 'admin')
+            @if (isset(Auth::user()->certificate->uploaded))
+            <x-profile-detail :certificate-id="Auth::user()->certificate->id" />
+            @else
+            <div class="row gap-2">
+                <div class="card text-center" style="width: 12rem; height: 7rem;">
+                    <a href="{{route('sertifikasi')}}" style="text-decoration: none">
+                        <div class="card-body">
+                            <p class="fw-bold mt-4"><small class="text-muted">Kecakapan Awak Kapal</small></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card text-center" style="width: 12rem; height: 7rem;">
+                    <div class="card-body">
+                        <p class="mt-4"><small class="text-muted">Segera Hadir</small></p>
+                    </div>
+                </div>
+            </div>
+            @endif
+            @else
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-                    @if(Auth::user()->rules !== 'admin')
-                    @if (isset(Auth::user()->certificate->uploaded))
-                    <x-profile-detail :certificate-id="Auth::user()->certificate->id" />
-                    @else
-                    <p>Anda Belum Melakukan Sertifikasi silakan klik <a href="{{route('sertifikasi')}}">link</a> Untuk
-                        melakukan pendaftaran !!</p>
-                    @endif
-                    @else
                     <link rel="stylesheet" href=" https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap5.css">
                     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
                     <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
@@ -63,11 +71,12 @@
                     <script>
                         new DataTable('#example');
                     </script>
-                    @endif
+                    
                 </div>
             </div>
+            @endif
         </div>
     </div>
-
+   
 </div>
 @endsection

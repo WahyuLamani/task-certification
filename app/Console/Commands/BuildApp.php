@@ -48,11 +48,18 @@ class BuildApp extends Command
             $this->error('Error occurred while running migration!');
         }
         
+        passthru('npm install', $npmExecute);
+        if ($npmExecute === 0) {
+            $this->info('Build app successfully!');
+        } else {
+            $this->error('error npm install');
+        }
+        sleep(1);
         passthru('npm run build', $npmExecute);
         if ($npmExecute === 0) {
             $this->info('Build app successfully!');
         } else {
-            $this->error('Error occurred while running migration!');
+            $this->error('error running npm run build');
         }
     }
 }

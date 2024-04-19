@@ -28,6 +28,19 @@
     .small-text {
       font-size: 0.8rem;
     }
+        .footer-logo {
+          height: 35px; /* Sesuaikan ukuran logo */
+          width: auto;
+        }
+        .custom-line-height {
+            line-height: 1.2; /* Atur jarak vertikal antara baris */
+        }
+        .text-10px {
+            font-size: 10px;
+        }
+        .text-12px {
+            font-size: 12px;
+        }
     
   </style>
 <body>
@@ -35,12 +48,14 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <div>
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{asset('assets/images/kementrian-perhubungan.png')}}" alt="Ministry of Transportation Logo" class="ministry-logo">
-                        <span class="">
-                            <div>Kementerian Perhubungan</div>
-                            <div class="small-text">BTPD Wilayah VI</div>
-                          </span>
+                    <a class="navbar-brand d-flex" href="{{ url('/') }}">
+                        <div>
+                            <img src="{{asset('assets/images/kementrian-perhubungan.png')}}" alt="Ministry of Transportation Logo" class="ministry-logo">
+                        </div>
+                        <div>
+                            <div class="custom-line-height text-12px"><b>KEMENTRIAN PERHUBUNGAN</b></div>
+                            <div class="custom-line-height text-10px">BPTD KELAS II JAMBI</div>
+                        </div>
                     </a>
                     
                 </div>
@@ -93,10 +108,32 @@
             </div>
         </nav>
 
-        <main>
+        <main class="">
             @yield('content')
         </main>
     </div>
+        <footer class="bg-white p-2">
+            <div class="container">
+            <div class="row">
+                <div class="col-md-4 d-flex align-items-center">
+                    <div class="text-secondary">&copy; 2024</div>
+                </div>
+                <div class="col-md-8 d-flex justify-content-end">
+                    <div class="row">
+                        <div class="col-2 d-flex align-items-center">
+                            <img src="{{asset('assets/images/kementrian-perhubungan.png')}}" alt="Logo" class="mt-1 footer-logo">
+                        </div>
+                        <div class="col-10">
+                            <div class="custom-line-height text-12px"><b>KEMENTRIAN PERHUBUNGAN</b></div>
+                            <div class="text-secondary custom-line-height text-10px">DIREKTORAT JENDRAL PERHUBUNGAN DARAT</div>
+                            <div class="custom-line-height text-12px"><b>BPTD KELAS II JAMBI</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </footer>
+
 </body>
 
 </html>
